@@ -21,7 +21,8 @@ func GetAlbums(c *gin.Context) {
 	albums := []models.Album{}
 	for rows.Next() {
 		var a models.Album
-		if err := rows.Scan(&a.ID, &a.Title, &a.Artist, &a.Price); err != nil {
+		err := rows.Scan(&a.ID, &a.Title, &a.Artist, &a.Price)
+		if err != nil {
 			c.IndentedJSON(http.StatusInternalServerError, gin.H{"message": err.Error()})
 			return
 		}

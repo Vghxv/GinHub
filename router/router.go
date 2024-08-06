@@ -7,7 +7,9 @@ import (
 )
 
 func SetupRouter() *gin.Engine {
-	router := gin.Default()
+	router := gin.New()
+	router.Use(gin.Logger())
+	router.Use(gin.Recovery())
 
 	router.GET("/albums", controllers.GetAlbums)
 	router.GET("/albums/:id", controllers.GetAlbumByID)

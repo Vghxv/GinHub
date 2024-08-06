@@ -1,23 +1,37 @@
-```bash
-url -X POST http://localhost:8080/albums \
--H "Content-Type: application/json" \
--d '{
-  "title": "Kind of Blue",
-  "artist": "Miles Davis",
-  "price": 29.99
-}'
-```
+# GinHub
 
-```bash
-curl http://localhost:8080/albums/5
-```
+## Features
 
-- `\d` describe table;
-- `\?` list all the commands
-- `\l` list databases
-- `\conninfo` display information about current connection
-- `\c [DBNAME]` connect to new database, e.g., \c template1
-- `\dt` list tables of the public schema
-- `\dt <schema-name>.*` list tables of certain schema, e.g., \dt public.*
-- `\dt *.*` list tables of all schemas
-- `\q` quit psql
+- [ ] RESTful API
+- [ ] Gorm
+- [ ] Swagger
+- [ ] Logging
+- [ ] Jwt-go
+- [ ] Gin
+- [ ] Graceful restart or stop (fvbock/endless)
+- [x] App configurable
+- [ ] Cron
+- [ ] Redis
+- [ ] Rate Limiting
+- [ ] CORS (Cross-Origin Resource Sharing) Handling
+- [ ] Input Validation
+- [ ] Request Caching
+- [ ] API Versioning
+- [ ] User Authentication and Authorization
+- [ ] Data Pagination
+- [ ] File Upload Handling
+- [ ] Middleware Support
+- [ ] Metrics and Monitoring
+- [ ] Load Balancing
+- [ ] Multi-Language Support
+- [ ] WebSocket Support
+- [ ] Error Handling and Custom Error Pages
+- [ ] Database Migrations (e.g., with Goose or another tool)
+- [ ] Automated Testing (Unit, Integration, and End-to-End Tests)
+- [ ] Docker Support
+- [ ] Continuous Integration/Continuous Deployment (CI/CD) Pipelines
+- [ ] Static File Serving
+- [ ] GraphQL Support
+- [ ] OAuth2 Support
+- [ ] API Gateway Integration
+- [ ] Health Checks and Readiness 

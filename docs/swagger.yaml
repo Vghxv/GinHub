@@ -1,0 +1,73 @@
+basePath: /api/v1
+definitions:
+  models.Album:
+    properties:
+      artist:
+        type: string
+      id:
+        type: integer
+      price:
+        type: number
+      title:
+        type: string
+    type: object
+info:
+  contact: {}
+  description: This is a GinHub API server.
+  title: GinHub API
+  version: "1"
+paths:
+  /albums:
+    get:
+      description: get all albums
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Album'
+      summary: GetAlbums
+      tags:
+      - albums
+    post:
+      consumes:
+      - application/json
+      description: create album
+      parameters:
+      - description: Album
+        in: body
+        name: album
+        required: true
+        schema:
+          $ref: '#/definitions/models.Album'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Album'
+      summary: PostAlbums
+      tags:
+      - albums
+  /albums/{id}:
+    get:
+      description: get album by ID
+      parameters:
+      - description: Album ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Album'
+      summary: GetAlbumByID
+      tags:
+      - albums
+swagger: "2.0"

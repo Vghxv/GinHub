@@ -6,6 +6,11 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// @title GinHub API
+// @version 1.0
+// @description GinHub API server
+// @host localhost:8000
+// @BasePath /api/v1
 func SetupRouter() *gin.Engine {
 	router := gin.New()
 	router.Use(gin.Logger())

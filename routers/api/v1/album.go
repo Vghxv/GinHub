@@ -10,6 +10,12 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// @Summary GetAlbums
+// @Description get all albums
+// @Produce  json
+// @Success 200 {object} models.Album
+// @Router /albums [get]
+// @Tags albums
 func GetAlbums(c *gin.Context) {
 	rows, err := database.DB.Query(context.Background(), "SELECT id, title, artist, price FROM albums")
 	if err != nil {
@@ -32,6 +38,13 @@ func GetAlbums(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, albums)
 }
 
+// @Summary GetAlbumByID
+// @Description get album by ID
+// @Produce  json
+// @Param id path int true "Album ID"
+// @Success 200 {object} models.Album
+// @Router /albums/{id} [get]
+// @Tags albums
 func GetAlbumByID(c *gin.Context) {
 	id := c.Param("id")
 	var a models.Album
@@ -43,6 +56,14 @@ func GetAlbumByID(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, a)
 }
 
+// @Summary PostAlbums
+// @Description create album
+// @Accept json
+// @Produce  json
+// @Param album body models.Album true "Album"
+// @Success 201 {object} models.Album
+// @Router /albums [post]
+// @Tags albums
 func PostAlbums(c *gin.Context) {
 	var newAlbum models.Album
 	if err := c.BindJSON(&newAlbum); err != nil {

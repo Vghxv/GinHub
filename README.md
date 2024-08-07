@@ -2,12 +2,12 @@
 
 ## Features
 
-- [ ] RESTful API
+- [x] RESTful API
 - [ ] Gorm
-- [ ] Swagger
+- [x] Swagger
 - [ ] Logging
 - [ ] Jwt-go
-- [ ] Gin
+- [x] Gin
 - [ ] Graceful restart or stop (fvbock/endless)
 - [x] App configurable
 - [ ] Cron
@@ -16,7 +16,7 @@
 - [ ] CORS (Cross-Origin Resource Sharing) Handling
 - [ ] Input Validation
 - [ ] Request Caching
-- [ ] API Versioning
+- [x] API Versioning
 - [ ] User Authentication and Authorization
 - [ ] Data Pagination
 - [ ] File Upload Handling
@@ -34,4 +34,5 @@
 - [ ] GraphQL Support
 - [ ] OAuth2 Support
 - [ ] API Gateway Integration
-- [ ] Health Checks and Readiness 
+- [ ] Health Checks and Readiness
+- [ ] Differentiate Production and Development Environments

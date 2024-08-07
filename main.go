@@ -20,6 +20,7 @@ func main() {
 	setting.Init()
 	database.Connect()
 	r := routers.SetupRouter()
+	r.SetTrustedProxies([]string{"172.17.0.0/16"})
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	host := setting.ServerSetting.Host
 	port := setting.ServerSetting.Port

@@ -15,10 +15,9 @@ func SetupRouter() *gin.Engine {
 	router := gin.New()
 	router.Use(gin.Logger())
 	router.Use(gin.Recovery())
-
-	router.GET("/albums", v1.GetAlbums)
-	router.GET("/albums/:id", v1.GetAlbumByID)
-	router.POST("/albums", v1.PostAlbums)
-
+	basePath := "/api/v1"
+	router.GET(basePath+"/albums", v1.GetAlbums)
+	router.GET(basePath+"/albums/:id", v1.GetAlbumByID)
+	router.POST(basePath+"/albums", v1.PostAlbums)
 	return router
 }

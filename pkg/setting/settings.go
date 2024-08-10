@@ -20,8 +20,15 @@ type Database struct {
 	Name     string
 }
 
+type JWT struct {
+	Key string
+	Issuer string
+	Expires int
+}
+
 var ServerSetting = &Server{}
 var DatabaseSetting = &Database{}
+var JWTSetting = &JWT{}
 
 var cfg *ini.File
 
@@ -34,6 +41,7 @@ func Init() {
 
 	mapTo("server", ServerSetting)
 	mapTo("database", DatabaseSetting)
+	mapTo("auth", JWTSetting)
 }
 
 func mapTo(section string, v interface{}) {

@@ -1,8 +1,7 @@
 package routers
 
 import (
-	v1 "github.com/Vghxv/GinHub/routers/api/v1"
-
+	album "github.com/Vghxv/GinHub/routers/api/v1"
 	"github.com/gin-gonic/gin"
 )
 
@@ -16,8 +15,13 @@ func SetupRouter() *gin.Engine {
 	router.Use(gin.Logger())
 	router.Use(gin.Recovery())
 	basePath := "/api/v1"
-	router.GET(basePath+"/albums", v1.GetAlbums)
-	router.GET(basePath+"/albums/:id", v1.GetAlbumByID)
-	router.POST(basePath+"/albums", v1.PostAlbums)
+	
+	apiRouter := router.Group(basePath)
+	{
+		apiRouter.GET("/albums", album.GetAlbums)
+		apiRouter.GET("/albums/:id", album.GetAlbumByID)
+		apiRouter.POST("/albums", album.PostAlbums)
+	}
+
 	return router
 }

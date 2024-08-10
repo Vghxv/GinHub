@@ -3,6 +3,7 @@ module github.com/Vghxv/GinHub
 go 1.20
 
 require (
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/gin-gonic/gin v1.10.0
 	github.com/go-ini/ini v1.67.0
 	github.com/jackc/pgx/v4 v4.18.3

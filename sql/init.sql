@@ -18,13 +18,14 @@ CREATE TABLE customers (
     id SERIAL PRIMARY KEY,
     first_name VARCHAR(255) NOT NULL,
     last_name VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL
+    email VARCHAR(255) NOT NULL,
+    pswd VARCHAR(255) NOT NULL
 );
 
-INSERT INTO customers (first_name, last_name, email) VALUES 
-('John', 'Doe', 'john212@gmail.com'),
-('Jane', 'taylor', 'f23@gmail.com'),
-('Mary', 'Smith', 'msmi44@gmail.com');
+INSERT INTO customers (first_name, last_name, email, pswd) VALUES
+('John', 'Doe', 'john212@gmail.com', 'placeholder'),
+('Jane', 'taylor', 'f23@gmail.com', 'placeholder'),
+('Mary', 'Smith', 'msmi44@gmail.com', 'placeholder');
 
 CREATE TABLE orders (
     id SERIAL PRIMARY KEY,

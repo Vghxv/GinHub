@@ -12,16 +12,31 @@ import (
 var DB *pgxpool.Pool
 
 func Connect() {
-	dbtype := setting.DatabaseSetting.Type
-	db := setting.DatabaseSetting.User
-	password := setting.DatabaseSetting.Password
-	host := setting.DatabaseSetting.Host
-	port := setting.DatabaseSetting.Port
-	name := setting.DatabaseSetting.Name
-	databaseUrl := fmt.Sprintf("%s://%s:%s@%s:%s/%s", dbtype, db, password, host, port, name)
-	var err error
-	DB, err = pgxpool.Connect(context.Background(), databaseUrl)
+	config := setting.DatabaseSetting
+	databaseURL := fmt.Sprintf(
+		"%s://%s:%s@%s:%s/%s",
+		config.Type,
+		config.User,
+		config.Password,
+		config.Host,
+		config.Port,
+		config.Name,
+	)	
+
+	poolConfig, err := pgxpool.ParseConfig(databaseURL)
 	if err != nil {
-		log.Fatalf("Unable to connect to database: %v\n", err)
+		log.Fatalf("Unable to parse config: %v\n", err)
 	}
+
+	DB, err = pgxpool.ConnectConfig(context.Background(), poolConfig)
+	if err != nil {
+		log.Fatal("Unable to connect to database: ", err)
+	}
+
+	log.Println("Database connected")
+}
+
+func Close() {
+	DB.Close()
+	log.Println("Database closed")
 }

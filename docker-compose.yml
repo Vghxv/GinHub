@@ -38,6 +38,17 @@ services:
     networks:
       - app-network
 
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ./conf/prometheus.yml:/etc/prometheus/prometheus.yml
+    expose:
+      - "9090"
+    networks:
+      - app-network
+    depends_on:
+      - go-server
+
 networks:
   app-network:
     driver: bridge

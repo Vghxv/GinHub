@@ -4,6 +4,8 @@ import (
 	"log"
 
 	_ "github.com/Vghxv/GinHub/docs"
+	"github.com/gin-gonic/gin"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 
 	"github.com/Vghxv/GinHub/database"
 	"github.com/Vghxv/GinHub/pkg/setting"
@@ -22,6 +24,8 @@ func main() {
 	r := routers.SetupRouter()
 	r.SetTrustedProxies([]string{"172.17.0.0/16"})
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+	r.GET("/metrics", gin.WrapH(promhttp.Handler()))
+
 	host := setting.ServerSetting.Host
 	port := setting.ServerSetting.Port
 	log.Fatal(r.Run(host + ":" + port))
